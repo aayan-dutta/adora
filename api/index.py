@@ -15,7 +15,7 @@ def add_task():
         task.append(task)
     return redirect(url_for('index'))
 
-@app.route('/delete/<inte:task_id>', methods = ['POST'])
+@app.route('/delete/<int:task_id>', methods = ['POST'])
 def delete_task(task_id):
     if 0 <= task_id < len(tasks):
         tasks.pop(task_id)
