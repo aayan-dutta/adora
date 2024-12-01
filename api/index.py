@@ -10,6 +10,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres.tughlhxifvsjvntmj
 db.init_app(app)
 
 
+
+
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)

@@ -3,29 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task List</title>
+    <link href="/static/css/output.css" rel="stylesheet">
+    <script src="https://cdn.jsdel  ivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+    <title>adora</title>
 </head>
-<body>
-    <h1>adora</h1>
+<body class="bg-gray-100">
+    
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">adora</h1>
 
-    <!-- Form to add new task -->
-    <form method="POST" action="/add">
-        <input type="text" name="task" placeholder="New task" required>
-        <button type="submit">Add Task</button>
-    </form>
+        <!-- Task Form -->
+        <form action="/add" method="POST" class="flex justify-center mb-8">
+            <input 
+                type="text" 
+                name="task" 
+                placeholder="Enter a new task" 
+                class="w-2/3 p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+            >
+            <button 
+                type="submit" 
+                class="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+                Add Task
+            </button>
+        </form>
 
-    <!-- Display all tasks -->
-    <ul>
-        {% for task in tasks %}
-            <li>
-                {{ task.name }}
-                <!-- Form to delete the task -->
-                <form method="POST" action="{{ url_for('delete_task', task_id=task.id) }}" style="display:inline;">
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
-
+        <!-- Task List -->
+        <div class="bg-white shadow-md rounded-lg p-4">
+            {% if tasks %}
+                <ul class="divide-y divide-gray-200">
+                    {% for task in tasks %}
+                        <li class="flex justify-between items-center py-2">
+                            <span class="text-gray-800">{{ task.name }}</span>
+                            <form action="/delete/{{ task['id'] }}" method="POST">
+                                <button 
+                                    type="submit" 
+                                    class="text-red-600 hover:underline hover:text-red-800"
+                                >
+                                    Delete
+                                </button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-gray-500 text-center">No tasks found. Add your first task!</p>
+            {% endif %}
+        </div>
+    </div>
 </body>
 </html>
