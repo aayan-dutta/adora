@@ -34,6 +34,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(150), nullable=False)
+    tasks = db.relationship('Task', backref='user', lazy=True)  # One-to-Many relationship
 
 
 class RegisterForm(FlaskForm):
@@ -106,38 +107,47 @@ def register():
 
     return render_template('register.html', form=form)
 
-
 class Task(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)  # Auto-incrementing task ID
+    name = db.Column(db.String(100), nullable=False)  # Task name
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Foreign key
+
 
     def __repr__(self):
         return f'<Task {self.name}>'
-
-with app.app_context():
-    db.create_all()
     
-print('Hello World')
+
 @app.route('/task')
+@login_required
 def index():
-    tasks= Task.query.all()
+    tasks = Task.query.filter_by(user_id=current_user.id).all()  # Show only the logged-in user's tasks
     return render_template('index.html', tasks=tasks)
 
 @app.route('/add', methods=['POST'])
+@login_required
 def add_task():
    task_name = request.form.get('task')
    if task_name:
-        new_task = Task(name=task_name)
+        new_task = Task(name=task_name, user_id=current_user.id)
         db.session.add(new_task)
         db.session.commit()
    return redirect(url_for('index'))
 
+
+
+
 @app.route('/delete/<int:task_id>', methods=['POST'])
+@login_required
 def delete_task(task_id):
     task = Task.query.get_or_404(task_id)
+    if task.user_id != current_user.id:  # Check if the task belongs to the current user
+        return "Unauthorized", 403
     db.session.delete(task)
     db.session.commit()
     return redirect(url_for('index'))
+
+
+
 
 @app.route('/about')
 def about():
