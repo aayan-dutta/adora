@@ -117,7 +117,7 @@ class Task(db.Model):
 with app.app_context():
     db.create_all()
     
-
+print('Hello World')
 @app.route('/task')
 def index():
     tasks= Task.query.all()
