@@ -3,12 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="/static/css/output.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+    <title>Welcome to adora!</title>
 </head>
-<body>
-    <h1>Welcome to adora</h1>
-    <a href="{{url_for('login')}}">Login to adora</a><br>
-    <a href="{{url_for('register')}}">Register to adora</a><br>
-    
+<body class="bg-gray-100">
+
+    <div class="container mx-auto py-16 text-center">
+        <h1 class="text-4xl font-bold text-blue-600 mb-6 fade-in">
+            Welcome to adora
+        </h1>
+
+        <p class="typing-effect text-lg text-gray-700 mb-8">Your personal companion for everything school related. Login or register to get started.</p>
+
+        <div class="flex justify-center gap-6">
+            <a href="{{ url_for('login') }}" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Login
+            </a>
+            <a href="{{ url_for('register') }}" class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                Register
+            </a>
+        </div>
+    </div>
+
 </body>
 </html>

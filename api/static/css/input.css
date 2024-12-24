@@ -1,3 +1,105 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Reset margins, padding, and borders */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: #f7fafc; /* Tailwind's gray-100 */
+    margin: 0; /* Ensure no margin around the body */
+    padding: 0; /* Ensure no padding around the body */
+    width: 100vw; /* Full viewport width */
+    overflow-x: hidden;
+}
+
+
+
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 3s ease-out;
+  }
+
+  
+/* Animation for typing effect */
+@keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 69ch;
+    }
+  }
+  
+  @keyframes blinkCaret {
+    from, to {
+      border-color: transparent;
+    }
+    
+    50% {
+      border-color: black;
+    }
+  }
+  
+  /* Typing effect text styling */
+  .typing-effect {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif; /* Use a standard font */
+    font-size: 1.5rem;  /* Make the typed text smaller */
+    white-space: nowrap;
+    overflow: hidden;
+    width: 69ch;
+    border-right: 3px solid transparent;
+    animation: typing 3s steps(30) 1s 1 normal both, blinkCaret 0.75s step-end infinite;
+    line-height: 1.5; /* Adjust line height to avoid cutting off letters */
+    max-width: 100%;
+  }
+  
+  /* Centering the page content */
+  .container {
+    width: 80%;
+    overflow: hidden;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    text-align: center;
+    background-color: #f7fafc; /* Light background color */
+  }
+  
+  h1 {
+    font-size: 3rem; /* Make "Welcome to Adora" bigger */
+    font-weight: bold;
+    color: #2b6cb0; /* Adora blue */
+    margin-bottom: 1.5rem; /* Add space below the title */
+  }
+  
+  p {
+    font-size: 1.25rem; /* Smaller font for the typed text */
+    color: #4a5568; /* Gray text color for description */
+  }
+  

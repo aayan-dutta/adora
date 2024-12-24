@@ -3,20 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login to adora</title>
+    <title>Welcome to Adora</title>
+    <link href="/static/css/input.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </head>
-<body>
-    <h1>Login to continue</h1>
-
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        {{ form.username }}
-        {{ form.password }}
-        {{ form.submit }}
-    </form>
-
-
-    
-    <a href="{{url_for('register')}}">Don't have an account? Sign Up instead</a><br>
+<body class="bg-gray-100">
+    <div class="container">
+        <h1>Welcome to adora</h1>
+        <p class="typing-effect">Your personal companion for everything school related. Login or register to get started.</p>
+    </div>
 </body>
 </html>

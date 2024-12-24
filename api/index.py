@@ -1,3 +1,4 @@
+from datetime import timedelta
 from flask import Flask, request, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
@@ -14,6 +15,7 @@ app = Flask(__name__)
 bcrypt = Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres.tughlhxifvsjvntmjsli:Kayuaayan#081226@aws-0-ap-south-1.pooler.supabase.com:6543/postgres"
 app.config['SECRET_KEY'] = 'Ikookayu10'
+app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=7)
 
 
 db.init_app(app)
@@ -76,7 +78,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user:
             if bcrypt.check_password_hash(user.password, form.password.data):
-                login_user(user)
+                login_user(user, remember=True)
                 return redirect(url_for('dashboard'))
     return render_template('login.html', form=form)
 
