@@ -35,7 +35,7 @@
                 <ul class="divide-y divide-gray-200">
                     {% for task in tasks %}
                         <li class="flex justify-between items-center py-2">
-                            <span class="text-gray-800">{{ task.name }}</span>
+                            <span class="text-gray-800">{{ task.name }}</span>  
                             <form action="/delete/{{ task['id'] }}" method="POST">
                                 <button 
                                     type="submit" 
