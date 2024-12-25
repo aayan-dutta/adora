@@ -1694,11 +1694,8 @@ body {
   background-color: #f7fafc;
   /* Tailwind's gray-100 */
   margin: 0;
-  /* Ensure no margin around the body */
   padding: 0;
-  /* Ensure no padding around the body */
   width: 100vw;
-  /* Full viewport width */
   overflow-x: hidden;
 }
 
