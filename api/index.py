@@ -66,9 +66,13 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 
+
 @app.route('/')
 def home():
+    if current_user.is_authenticated:  # Redirect if the user is already logged in
+        return redirect(url_for('dashboard'))
     return render_template('home.html')
+    
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -120,7 +124,7 @@ class Task(db.Model):
     
 
 @app.route('/task')
-@login_required
+@login_required         
 def index():
     tasks = Task.query.filter_by(user_id=current_user.id).all()  # Show only the logged-in user's tasks
     return render_template('index.html', tasks=tasks)
@@ -157,3 +161,5 @@ def about():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+

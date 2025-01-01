@@ -1511,6 +1511,11 @@ input:checked + .toggle-bg {
   padding-bottom: 0.625rem;
 }
 
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -1619,6 +1624,11 @@ input:checked + .toggle-bg {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .opacity-0 {
   opacity: 0;
 }
@@ -1721,7 +1731,7 @@ body {
   }
 
   to {
-    width: 69ch;
+    width: 15ch;
   }
 }
 
@@ -1735,28 +1745,21 @@ body {
   }
 }
 
-/* Typing effect text styling */
-
 .typing-effect {
   display: inline-block;
   font-family: Arial, Helvetica, sans-serif;
-  /* Use a standard font */
   font-size: 1.5rem;
-  /* Make the typed text smaller */
   white-space: nowrap;
   overflow: hidden;
-  width: 69ch;
+  width: 15ch;
   border-right: 3px solid transparent;
   animation: typing 3s steps(30) 1s 1 normal both, blinkCaret 0.75s step-end infinite;
   line-height: 1.5;
-  /* Adjust line height to avoid cutting off letters */
   max-width: 100%;
 }
 
-/* Centering the page content */
-
 .container {
-  width: 80%;
+  width: 100%;
   overflow: hidden;
   max-width: 100%;
   display: flex;
@@ -1764,27 +1767,248 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  /* Ensure it takes full viewport height */
   text-align: center;
   background-color: #f7fafc;
-  /* Light background color */
 }
 
 h1 {
   font-size: 3rem;
-  /* Make "Welcome to Adora" bigger */
   font-weight: bold;
   color: #2b6cb0;
-  /* Adora blue */
   margin-bottom: 1.5rem;
-  /* Add space below the title */
 }
 
 p {
   font-size: 1.25rem;
-  /* Smaller font for the typed text */
   color: #4a5568;
-  /* Gray text color for description */
+}
+
+/* Hero Section */
+
+.hero {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: #ffffff;
+  /* White background */
+  color: #000;
+  /* Black text */
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #000000;
+  /* Black text */
+  margin-bottom: 1.5rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #000000;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.hero-buttons a {
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-login {
+  background: #1a73e8;
+  /* Bright futuristic blue */
+}
+
+.btn-login:hover {
+  background: #1365c9;
+}
+
+.btn-register {
+  background: #e63946;
+  /* Bright red */
+}
+
+.btn-register:hover {
+  background: #c72f3a;
+}
+
+/* Features Section */
+
+.features {
+  padding: 4rem 2rem;
+  background-color: #121212;
+  /* Dark gray section */
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.feature-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.feature-card {
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  text-align: left;
+}
+
+.feature-card h3 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card p {
+  color: #aaaaaa;
+  font-size: 1rem;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f2f6fa;
+}
+
+#login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Full screen height for proper centering */
+  margin: 0;
+  /* Remove default margins */
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: #1a2238;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: white;
+}
+
+.card input {
+  width: 100%;
+  margin: 1rem 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background: #f2f6fa;
+}
+
+.card input:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 128, 255, 0.4);
+}
+
+.card button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 1rem;
+  background-color: #5865f2;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #4752c4;
+}
+
+.card a {
+  display: block;
+  margin-top: 1rem;
+  color: #b8c1ec;
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+.login-container {
+  width: 400px;
+  padding: 40px;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  /* Slightly lighter shade for the card */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+label {
+  flex: 0 0 100px;
+  /* Fixed width for labels */
+  text-align: right;
+  margin-right: 10px;
+}
+
+input[type="text"],
+  input[type="password"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #ffffff ;
+  color: #000;
+}
+
+button {
+  background-color: #e63946;
+  /* Red button */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+a {
+  color: #ccc;
+  text-decoration: none;
+  margin-top: 15px;
+  display: block;
+  text-align: center;
 }
 
 .hover\:border-gray-300:hover {
@@ -1995,4 +2219,3 @@ p {
 .rtl\:space-x-reverse:where([dir="rtl"], [dir="rtl"] *) > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 1;
 }
-  

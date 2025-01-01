@@ -1,30 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/static/css/output.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
-    <title>fuck to adora!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/static/css/output.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+  <title>adora | Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #0a0a0a; /* Dark background */
+      color: #ffffff;
+    }
+
+    footer {
+      padding: 1.5rem;
+      background-color: #0a0a0a;
+      color: #777777;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container mx-auto py-16 text-center">
-        <h1 class="text-4xl font-bold text-blue-600 mb-6 fade-in">
-            Welcome to adora
-        </h1>
-
-        <p class="typing-effect text-lg text-gray-700 mb-8">Your personal companion for everything school related. Login or register to get started.</p>
-
-        <div class="flex justify-center gap-6">
-            <a href="{{ url_for('login') }}" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                Login
-            </a>
-            <a href="{{ url_for('register') }}" class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
-                Register
-            </a>
-        </div>
+  <section class="hero"> 
+    <h1 class="typing-effect ">Welcome to adora</h1>
+    <p>Your solution to managing school tasks, staying productive, and solving doubts effortlessly.</p>
+    <div class="hero-buttons">
+      <a href="{{ url_for('login') }}" class="btn-login">Login</a>
+      <a href="{{ url_for('register') }}" class="btn-register">Register</a>
     </div>
+  </section>
+
+  <section class="features">
+    <h2>Why Choose Adora?</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Organize with Ease</h3>
+        <p>Create to-do lists, track your tasks, and manage deadlines efficiently with adora's intuitive interface.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Instant Doubt Resolution</h3>
+        <p>Use AI to get your school-related questions answered in no time.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Stay Ahead</h3>
+        <p>adora keeps you on track with smart reminders and personalized tools for success.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      <a href="https://github.com/aayan-dutta/adora" target="_blank">adora | project link</a>
+    </p>
+  </footer>
 
 </body>
 </html>
