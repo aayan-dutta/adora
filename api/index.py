@@ -7,6 +7,11 @@ import wtforms
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
+import requests
+import google.generativeai as gyatt
+gyatt.configure(api_key='AIzaSyDyaQmCuP9F9-SqSuwsLT2Mg8j_TDqBXPs')
+rizzler = gyatt.GenerativeModel('gemini-1.5-flash')
+
 
 
 db = SQLAlchemy()
@@ -100,7 +105,7 @@ def logout():
     return redirect(url_for('login'))
 
 
-@ app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
 
@@ -113,8 +118,35 @@ def register():
 
     return render_template('register.html', form=form)
 
+@app.route('/promodormo')
+def promodormo():
+    return render_template('promodormo.html')
+
+
+
+#gemini
+@app.route('/ask', methods=['POST'])
+def ask():
+    huzz = '''You're a 13 year old kid surviving off brainrot on tiktok. You have all
+    the knowledge of the world but you can only talk in brainrot. skibidi, sigma, huzz, chill guy,
+    bruzz, basically every tiktok slang you can think of. '''
+    data = request.json
+    print('got ruzz type shuzz')
+
+    prompt = data['prompt']
+    if prompt:
+        response = rizzler.generate_content(huzz+prompt)
+        return {'response': response.text} 
+    return 'Prompt not found', 404
+
+@app.route('/aiask')
+def aiask():
+    return render_template('ask.html')
+
+
+
 class Task(db.Model):
-    id = db.Column(db.Integer, primary_key=True)  # Auto-incrementing task ID
+    id = db.Column(db.Integer, primary_key=True)  
     name = db.Column(db.String(100), nullable=False)  # Task name
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Foreign key
 

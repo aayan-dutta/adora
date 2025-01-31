@@ -1,59 +1,98 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔥 adora | HOME 🔥</title>
   <link href="/static/css/output.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
-  <title>adora | Home</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #0a0a0a; /* Dark background */
-      color: #ffffff;
+      background: url('https://i.redd.it/oe0jwdyzy4zd1.jpeg'); /* Chaotic meme background */
+      background-size: cover;
+      background-position: center;
+      animation: pulse-bg 3s infinite alternate;
+    }
+
+    @keyframes pulse-bg {
+      0% { filter: brightness(100%) contrast(100%); }
+      100% { filter: brightness(120%) contrast(110%); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #ffcc00;
+      animation: shake 0.5s infinite;
+    }
+
+    .hero-buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: 3px solid #ff4500;
+      background: rgba(255, 69, 0, 0.8);
+      color: #fff;
+      text-transform: uppercase;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .hero-buttons a:hover {
+      transform: scale(1.1) rotate(-2deg);
     }
 
     footer {
       padding: 1.5rem;
-      background-color: #0a0a0a;
-      color: #777777;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #ffcc00;
       text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <section class="hero"> 
-    <h1 class="typing-effect ">Welcome to adora</h1>
-    <p>Your solution to managing school tasks, staying productive, and solving doubts effortlessly.</p>
+  <section class="hero text-center p-10"> 
+    <h1>🚀 WELCOME TO ADORA 🚀</h1>
+    <p class="text-lg text-red-300">The ULTIMATE way to stay productive... or at least pretend you are! 😈</p>
     <div class="hero-buttons">
-      <a href="{{ url_for('login') }}" class="btn-login">Login</a>
-      <a href="{{ url_for('register') }}" class="btn-register">Register</a>
+      <a href="{{ url_for('login') }}">🔥 Login 🔥</a>
+      <a href="{{ url_for('register') }}">⚡ Register ⚡</a>
     </div>
   </section>
 
-  <section class="features">
-    <h2>Why Choose Adora?</h2>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3>Organize with Ease</h3>
-        <p>Create to-do lists, track your tasks, and manage deadlines efficiently with adora's intuitive interface.</p>
+  <section class="features text-center p-10">
+    <h2 class="text-2xl text-yellow-400 font-bold">💥 Why Choose Adora? 💥</h2>
+    <div class="feature-grid grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+      <div class="feature-card bg-gray-900 p-4 rounded-lg shadow-lg">
+        <h3 class="text-xl text-blue-300">📌 Organize with Chaos</h3>
+        <p>To-do lists? Deadlines? We got it covered... kinda. Just use it, trust.</p>
       </div>
-      <div class="feature-card">
-        <h3>Instant Doubt Resolution</h3>
-        <p>Use AI to get your school-related questions answered in no time.</p>
+      <div class="feature-card bg-gray-900 p-4 rounded-lg shadow-lg">
+        <h3 class="text-xl text-green-300">🤖 AI-Powered Shenanigans</h3>
+        <p>Ask a question, get an answer. Might be right. Might be cursed.</p>
       </div>
-      <div class="feature-card">
-        <h3>Stay Ahead</h3>
-        <p>adora keeps you on track with smart reminders and personalized tools for success.</p>
+      <div class="feature-card bg-gray-900 p-4 rounded-lg shadow-lg">
+        <h3 class="text-xl text-pink-300">🚀 Stay Ahead (or Not)</h3>
+        <p>Adora will try to keep you on track. But we both know how that goes. 😆</p>
       </div>
     </div>
   </section>
 
   <footer>
     <p>
-      <a href="https://github.com/aayan-dutta/adora" target="_blank">adora | project link</a>
+      <a href="https://github.com/aayan-dutta/adora" target="_blank">💀 adora | project link 💀</a>
     </p>
   </footer>
 

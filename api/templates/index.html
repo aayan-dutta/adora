@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +12,25 @@
     <link href="/static/css/output.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
     <title>adora</title>
+    <style>
+        body {
+            background-image: url('https://somethinkofvalue.com/wp-content/uploads/2024/02/Funny-Sun-Tzu-Quote-memes-1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Ensure container is transparent */
+        .container {
+            background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent background */
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-    
+<body>
+
     <div class="container mx-auto py-8">
         <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">adora</h1>
 
@@ -30,7 +52,7 @@
             >
             <button 
                 type="submit" 
-                class="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="bg-blue-600 text-yellow-300 px-4 py-2 rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
                 Add Task
             </button>
@@ -45,7 +67,7 @@
                         <form action="/delete/{{ task.id }}" method="POST">
                             <button 
                                 type="submit" 
-                                class="text-red-600 hover:text-red-800 mt-3"
+                                class="text-white hover:text-black"
                             >
                                 Delete
                             </button>
@@ -57,13 +79,12 @@
             {% endif %}
         </div>
 
-
         <!-- Logout -->
         <div class="text-center mt-6">
             <form action="/logout" method="POST">
                 <button 
                     type="submit" 
-                    class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    class="bg-gray-600 text-blue-300 px-4 py-2 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
                 >
                     Logout
                 </button>
@@ -72,4 +93,3 @@
     </div>
 </body>
 </html>
-

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro - Adora</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Chill vibes 😎 */
+        body {
+            background: url('https://miro.medium.com/v2/resize:fit:1400/0*uQo-YVFfoMp9Eai9');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Wobble animations */
+        @keyframes wobble {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+            75% { transform: rotate(-3deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        /* Blinking timer */
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen text-white">
+    
+    <div class="bg-[#111827] p-6 rounded-3xl shadow-2xl text-center w-full max-w-lg border-4 border-blue-400">
+        <h1 class="text-4xl font-extrabold mb-4 animate-wobble">😎 CHILL POMODORO 😎</h1>
+        
+        <!-- Countdown Timer -->
+        <div id="timer" class="text-6xl font-mono font-bold mb-4 animate-blink">25:00</div>
+
+        <!-- Progress Bar -->
+        <div class="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
+            <div id="progress" class="h-4 bg-blue-400"></div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex justify-between mt-6">
+            <button onclick="startTimer()" 
+                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition transform hover:scale-110 active:scale-90 animate-wobble">
+                ▶️ Start
+            </button>
+            <button onclick="resetTimer()" 
+                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition transform hover:scale-110 active:scale-90 animate-wobble">
+                ⏹ Reset
+            </button>
+        </div>
+
+        <!-- Encouragement Message -->
+        <p id="encourage" class="mt-4 text-sm text-yellow-300 font-bold"></p>
+    </div>
+
+    <script>
+        let timerInterval;
+        let timeLeft = 25*60; // 25 minutes
+        let running = false;
+        let audioStart = new Audio('https://www.myinstants.com/media/sounds/discord-join.mp3');
+        let audioEnd = new Audio('https://www.myinstants.com/media/sounds/meme-aww.mp3');
+
+        function startTimer() {
+            if (running) return;
+            running = true;
+            audioStart.play();
+            document.getElementById('encourage').innerText = getRandomEncouragement();
+
+            timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('timer').innerText = "DONE!";
+                    audioEnd.play();
+                    document.getElementById('encourage').innerText = "😎 Chill, you earned it!";
+                    return;
+                }
+                
+                timeLeft--;
+                updateTimerDisplay();
+            }, 1000);
+
+            // Start progress bar animation
+            document.getElementById('progress').style.animation = `timer ${timeLeft}s linear forwards`;
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            timeLeft = 25*60 ;
+            updateTimerDisplay();
+            document.getElementById('progress').style.animation = '';
+            document.getElementById('encourage').innerText = "";
+            running = false;
+        }
+
+        function updateTimerDisplay() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            document.getElementById('timer').innerText = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function getRandomEncouragement() {
+            let messages = [
+                "😎 Take it easy, but stay focused!",
+                "🎧 Vibe check: Are you working or slacking?",
+                "🚀 Chill but grind!",
+                "🌊 Smooth sailing, keep going!",
+                "🔥 Stay cool, stay productive!",
+                "🥶 Ice cold focus, my guy!",
+                "💯 You're built different!"
+            ];
+            return messages[Math.floor(Math.random() * messages.length)];
+        }
+    </script>
+</body>
+</html>

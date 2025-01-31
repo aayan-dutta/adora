@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask AI - Adora</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@preline/preline@latest/dist/preline.min.css" rel="stylesheet">
+    <style>
+        /* Fun wavy background */
+        body {
+            background: linear-gradient(135deg, #1e3a8a, #9333ea, #0ea5e9);
+            background-size: 300% 300%;
+            animation: gradientBG 6s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Shake animation for empty input */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen text-white">
+
+    <div class="bg-[#2c3e50] p-6 rounded-xl shadow-xl w-full max-w-md text-center">
+        <h1 class="text-3xl font-extrabold mb-4 animate-bounce">Ask Anything 🤔</h1>
+        
+        <div class="flex flex-col gap-3">
+            <label for="question" class="text-sm text-gray-300">Type your wildest question:</label>
+            <input type="text" id="question" name="question" 
+                   class="w-full p-3 text-white bg-[#374151] border-none rounded-lg outline-none focus:ring-2 focus:ring-purple-400 transition" required>
+            <button onclick="ask()" 
+                    class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 rounded-lg transition transform hover:scale-110 active:scale-95">
+                🚀 Send it
+            </button>
+        </div>
+
+        <div id="response" class="mt-4 p-3 bg-[#374151] rounded-lg text-left min-h-[50px]">
+            <p class="text-gray-300">Your answer will appear here...</p>
+        </div>
+    </div>
+
+    <script>
+        let responseBox = document.getElementById('response');
+        let questionInput = document.getElementById('question');
+
+        function ask() {
+            const prompt = questionInput.value.trim();
+
+            // If input is empty, shake it
+            if (!prompt) {
+                questionInput.classList.add("animate-[shake_0.3s]");
+                setTimeout(() => questionInput.classList.remove("animate-[shake_0.3s]"), 300);
+                return;
+            }
+
+            // Loading animation
+            responseBox.innerHTML = `<p class="text-yellow-400 animate-pulse">Thinking... 🤔</p>`;
+
+            fetch('/ask', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt: prompt })
+            })
+            .then(response => response.json())
+            .then(json => { 
+                typeWriterEffect(json.response);
+            });
+        }
+
+        function typeWriterEffect(text) {
+            responseBox.innerHTML = "";
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    responseBox.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 30); // Speed of typing effect
+                }
+            }
+            type();
+        }
+    </script>
+
+</body>
+</html>
