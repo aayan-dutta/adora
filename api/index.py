@@ -131,7 +131,7 @@ def ask():
     the knowledge of the world but you can only talk in brainrot. skibidi, sigma, huzz, chill guy,
     bruzz, basically every tiktok slang you can think of. '''
     data = request.json
-    print('got ruzz type shuzz')
+    
 
     prompt = data['prompt']
     if prompt:
