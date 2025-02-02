@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,11 +35,11 @@
         </div>
     </nav>
 
-    <div class="container mx-auto py-8">
-        <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">adora</h1>
+    <div class="container py-8 mx-auto">
+        <h1 class="mb-6 text-3xl font-bold text-center text-blue-600">adora (Last 5 Tasks)</h1>
 
         <!-- Welcome Message -->
-        <div class="text-center mb-4">
+        <div class="mb-4 text-center">
             <p class="text-gray-700">
                 Welcome, <span class="font-semibold text-blue-600">{{ current_user.username }}</span>! Here are your tasks:
             </p>
@@ -62,17 +56,17 @@
             >
             <button 
                 type="submit" 
-                class="bg-blue-600 text-yellow-300 px-4 py-2 rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="px-4 py-2 text-yellow-300 bg-blue-600 rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
                 Add Task
             </button>
         </form>
 
         <!-- Task List (Cards Layout) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {% if tasks %}
                 {% for task in tasks %}
-                    <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-5">
+                    <div class="p-5 bg-white border border-gray-200 rounded-lg shadow-lg">
                         <h5 class="text-xl font-bold text-gray-900">{{ task.name }}</h5>
                         <form action="/delete/{{ task.id }}" method="POST">
                             <button 
@@ -85,16 +79,16 @@
                     </div>
                 {% endfor %}
             {% else %}
-                <p class="text-gray-500 text-center col-span-full">No tasks found. Add your first task!</p>
+                <p class="text-center text-gray-500 col-span-full">No tasks found. Add your first task!</p>
             {% endif %}
         </div>
 
         <!-- Logout -->
-        <div class="text-center mt-6">
+        <div class="mt-6 text-center">
             <form action="/logout" method="POST">
                 <button 
                     type="submit" 
-                    class="bg-gray-600 text-blue-300 px-4 py-2 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    class="px-4 py-2 text-blue-300 bg-gray-600 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
                 >
                     Logout
                 </button>
