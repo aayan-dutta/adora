@@ -3,16 +3,16 @@ from flask import Flask, request, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
-from dotenv import load_dotenv
-import os
-load_dotenv()
+from environs import Env
+env = Env()
+env.read_env()
 import wtforms
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
 import requests
 import google.generativeai as gyatt
-gyatt.api_key = os.getenv('api_key')
+gyatt.api_key = env.str('api_key')
 rizzler = gyatt.GenerativeModel('gemini-1.5-flash')
 
 
@@ -21,8 +21,8 @@ db = SQLAlchemy()
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URL')
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')  
+app.config['SQLALCHEMY_DATABASE_URI'] = env.str('SQLALCHEMY_DATABASE_URL')
+app.config['SECRET_KEY'] = env.str('SECRET_KEY')  
 app.config['REMEMBER_COOKIE_DURATION'] = timedelta(days=7)
 
 
