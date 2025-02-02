@@ -80,6 +80,7 @@ def home():
     if current_user.is_authenticated:  # Redirect if the user is already logged in
         return redirect(url_for('dashboard'))
     return render_template('home.html')
+
     
 
 
