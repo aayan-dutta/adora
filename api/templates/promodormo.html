@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro - Adora</title>
+    <title>Promodormo - Adora</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Epilogue:ital,wght@1,100&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Barriecito', cursive;
+        font-size: large;
+        font-weight: 900;
+      }
+    </style>
     <style>
         /* Chill vibes 😎 */
         body {
@@ -31,43 +41,48 @@
         }
     </style>
 </head>
-<nav class="w-full bg-[#1e3a8a] p-4 shadow-lg fixed top-0 left-0 right-0 z-10">
-    <div class="max-w-screen-xl mx-auto flex justify-between items-center">
-        <a href="/task" class="text-2xl font-extrabold text-white">Adora</a>
-        <div class="flex space-x-6">
-            <a href="/task" class="text-white hover:text-purple-300">Home</a>
-            <a href="/promodormo" class="text-white hover:text-purple-300">Promodormo</a>
-            <a href="/aiask" class="text-white hover:text-purple-300">Ask</a>
-        </div>
-    </div>
-</nav>
-<body class="flex items-center justify-center min-h-screen text-white">
+
+<body>
+
+    <header class="flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white text-sm py-3">
+        <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
+          <a class="flex-none font-semibold text-xl text-black focus:outline-none focus:opacity-80" href="/dashboard" aria-label="Brand">Adora</a>
+          <div class="flex flex-row items-center gap-5 mt-5 sm:justify-end sm:mt-0 sm:ps-5">
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="/dashboard">Dashboard</a>
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="/task">Tasks</a>
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="/aiask">Ask AI</a>
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="/promodormo">Promodormo</a>
+          </div>
+        </nav>
+    </header>
     
-    <div class="bg-[#111827] p-6 rounded-3xl shadow-2xl text-center w-full max-w-lg border-4 border-blue-400">
-        <h1 class="text-4xl font-extrabold mb-4 animate-wobble">😎 CHILL POMODORO 😎</h1>
-        
-        <!-- Countdown Timer -->
-        <div id="timer" class="text-6xl font-mono font-bold mb-4 animate-blink">25:00</div>
+    <div class="flex items-center justify-center min-h-screen text-white">
+        <div class="bg-[#111827] p-6 rounded-3xl shadow-2xl text-center w-full max-w-lg border-4 border-blue-400">
+            <h1 class="text-4xl font-extrabold mb-4 animate-wobble">😎 CHILL PROMODORMO 😎</h1>
+            
+            <!-- Countdown Timer -->
+            <div id="timer" class="text-6xl font-mono font-bold mb-4 animate-blink">25:00</div>
 
-        <!-- Progress Bar -->
-        <div class="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
-            <div id="progress" class="h-4 bg-blue-400"></div>
+            <!-- Progress Bar -->
+            <div class="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
+                <div id="progress" class="h-4 bg-blue-400"></div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex justify-between mt-6">
+                <button onclick="startTimer()" 
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition transform hover:scale-110 active:scale-90 animate-wobble">
+                    ▶️ Start
+                </button>
+                <button onclick="resetTimer()" 
+                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition transform hover:scale-110 active:scale-90 animate-wobble">
+                    ⏹ Reset
+                </button>
+            </div>
+
+            <!-- Encouragement Message -->
+            <p id="encourage" class="mt-4 text-sm text-yellow-300 font-bold"></p>
         </div>
-
-        <!-- Buttons -->
-        <div class="flex justify-between mt-6">
-            <button onclick="startTimer()" 
-                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition transform hover:scale-110 active:scale-90 animate-wobble">
-                ▶️ Start
-            </button>
-            <button onclick="resetTimer()" 
-                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition transform hover:scale-110 active:scale-90 animate-wobble">
-                ⏹ Reset
-            </button>
-        </div>
-
-        <!-- Encouragement Message -->
-        <p id="encourage" class="mt-4 text-sm text-yellow-300 font-bold"></p>
     </div>
 
     <script>
@@ -131,3 +146,35 @@
     </script>
 </body>
 </html>
+
+<button id="playButton">Play Sound</button>
+        
+<audio id="audio" src="https://www.myinstants.com/media/sounds/chill-guy.mp3" loop></audio>
+
+<script>
+    document.getElementById('playButton').addEventListener('click', function() {
+        var audio = document.getElementById("audio");
+        audio.play().catch(function(error) {
+            console.log("Error playing the audio: ", error);
+        });
+    });
+
+    window.onload = function() {
+        var playButton = document.getElementById('playButton');
+        var audio = document.getElementById('audio');
+
+        function tryPlayAudio() {
+            playButton.click(); 
+            
+            audio.play().then(() => {
+                playButton.style.display = 'none';
+                console.log("Audio is playing!");
+            }).catch(function(error) {
+                console.log("Error playing the audio: ", error);
+                setTimeout(tryPlayAudio, 10);
+            });
+        }
+
+        tryPlayAudio(); 
+    };
+</script>

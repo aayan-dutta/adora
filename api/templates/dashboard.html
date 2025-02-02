@@ -4,48 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Adora</title>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@preline/preline@latest/dist/preline.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Epilogue:ital,wght@1,100&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
-
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .bg-overlay {
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn {
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+      body {
+        font-family: 'Barriecito', cursive;
+        font-size: large;
+        font-weight: 900;
+      }
+    </style>
+    <style>
+        #bg {
+            background-image: url('https://i.ytimg.com/vi/oyN6slOZcSE/maxresdefault.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
     </style>
 </head>
-<body class="bg-[url('https://i.ytimg.com/vi/oyN6slOZcSE/maxresdefault.jpg')] bg-cover bg-center min-h-screen flex flex-col">
-    <div class="bg-overlay w-full h-full absolute inset-0"></div>
-    
-    <nav class="w-full bg-[#1e3a8a] p-6 shadow-lg fixed top-0 left-0 right-0 z-10 flex justify-between items-center max-w-screen-xl mx-auto">
-        <a href="/task" class="text-2xl font-black text-white tracking-widest">Adora</a>
-        <div class="flex space-x-6 text-lg">
-            <a href="/task" class="text-white hover:text-yellow-300">Home</a>
-            <a href="/promodormo" class="text-white hover:text-yellow-300">Pomodoro</a>
-            <a href="/aiask" class="text-white hover:text-yellow-300">Ask AI</a>
-        </div>
-    </nav>
+<body class="bg-gray-50">
 
-    <div class="relative z-10 flex flex-col items-center justify-center min-h-screen text-white text-center px-6">
-        <h1 class="text-6xl font-extrabold text-yellow-400 mb-6 tracking-wide drop-shadow-lg">Adora's ready to SLAY!</h1>
-        <p class="text-2xl font-semibold mb-10">Welcome back, {{ current_user.username }}! Let's crush those tasks. 💀🧠🔥</p>
+    <header class="flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white text-sm py-3">
+        <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
+          <a class="flex-none font-semibold text-xl text-black focus:outline-none focus:opacity-80" href="/dashboard" aria-label="Brand">Adora</a>
+          <div class="flex flex-row items-center gap-5 mt-5 sm:justify-end sm:mt-0 sm:ps-5">
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="/dashboard">Dashboard</a>
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="/task">Tasks</a>
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="/aiask">Ask AI</a>
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="/promodormo">Promodormo</a>
+          </div>
+        </nav>
+    </header>
+
+    <div id="bg" class="absolute inset-0 h-full w-full filter blur-[5px] z-[-1]"></div>
+
+    <div class="flex flex-col items-center justify-center h-screen relative z-10">
+        <h1 class="text-6xl font-extrabold p-3 rounded-lg bg-pink-400 text-yellow-400 mb-6 tracking-wide drop-shadow-lg">Adora's ready to SLAY!</h1>
+        <p class="text-2xl text-red-400 font-semibold rounded-lg bg-yellow-400 p-3 mb-10">Welcome back, {{ current_user.username }}! Let's crush those tasks. 💀🧠🔥</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 w-full max-w-lg">
             <a href="{{ url_for('aiask') }}" class="btn bg-pink-500 hover:bg-pink-700 text-white py-4 px-8 rounded-lg text-xl shadow-lg">
@@ -62,7 +61,38 @@
             </a>
         </div>
         
-        <p class="text-xl text-yellow-300 font-bold mt-10 tracking-wide">Let's get that grind on, fam. Time to crush it! 💯</p>
+        <p class="text-xl text-yellow-300  p-3 rounded-lg bg-pink-400 font-bold mt-10 tracking-wide">Let's get that grind on, fam. Time to crush it! 💯</p>
     </div>
 </body>
 </html>
+<button id="playButton">Play Sound</button>
+        
+<audio id="audio" src="https://www.myinstants.com/media/sounds/locked-in-alien.mp3" loop></audio>
+
+<script>
+    document.getElementById('playButton').addEventListener('click', function() {
+        var audio = document.getElementById("audio");
+        audio.play().catch(function(error) {
+            console.log("Error playing the audio: ", error);
+        });
+    });
+
+    window.onload = function() {
+        var playButton = document.getElementById('playButton');
+        var audio = document.getElementById('audio');
+
+        function tryPlayAudio() {
+            playButton.click(); 
+            
+            audio.play().then(() => {
+                playButton.style.display = 'none';
+                console.log("Audio is playing!");
+            }).catch(function(error) {
+                console.log("Error playing the audio: ", error);
+                setTimeout(tryPlayAudio, 10);
+            });
+        }
+
+        tryPlayAudio(); 
+    };
+</script>

@@ -6,67 +6,62 @@
     <title>Ask AI - Adora</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/@preline/preline@latest/dist/preline.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Epilogue:ital,wght@1,100&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
-        /* Fun wavy background */
-        body {
-            background: linear-gradient(135deg, #1e3a8a, #9333ea, #0ea5e9);
-            background-size: 300% 300%;
-            animation: gradientBG 6s ease infinite;
-        }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Shake animation for empty input */
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
+      body {
+        font-family: 'Barriecito', cursive;
+        font-size: large;
+        font-weight: 900;
+      }
+    </style>
+    <style>
+        #bg {
+            background-image: url('https://img.ifunny.co/images/0b69e1287851451b2205c2fc9dd9c0d057371684839d4004f061b4bd30740ed3_1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
     </style>
 </head>
-<body class="bg-gradient-to-r from-indigo-800 to-purple-700 min-h-screen">
-
-    <div class="flex flex-col min-h-screen">
-
-        <!-- Navbar -->
-        <nav class="w-full bg-[#1e3a8a] p-4 shadow-lg fixed top-0 left-0 right-0 z-10">
-            <div class="max-w-screen-xl mx-auto flex justify-between items-center">
-                <a href="/task" class="text-2xl font-extrabold text-white">Adora</                                                                                                      m                                                                                                            jm    n  n     n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            nnnnnnnn                                                                                                                                                                                                                                                 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn                                                                                   nnnnnn                                                                                                                                                                                                                                      n                                                                                                                                                                                                                                                                                                                                                                                                                     '  '>"         
-                <div class="flex space-x-6"> 
-                    <a href="/task" class="text-white hover:text-purple-300">Home</a>
-                    <a href="/promodormo" class="text-white hover:text-purple-300">Promodormo</a>
-                    <a href="/aiask" class="text-white hover:text-purple-300">Ask</a>
-                </div>
-            </div>
+<body>
+    
+    <header class="flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white text-sm py-3">
+        <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
+          <a class="flex-none font-semibold text-xl text-black focus:outline-none focus:opacity-80" href="/dashboard" aria-label="Brand">Adora</a>
+          <div class="flex flex-row items-center gap-5 mt-5 sm:justify-end sm:mt-0 sm:ps-5">
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="/dashboard">Dashboard</a>
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="/task">Tasks</a>
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="/aiask">Ask AI</a>
+            <a class="font-medium text-gray-600 hover:text-gray-400 focus:outline-none focus:text-gray-400" href="/promodormo">Promodormo</a>
+          </div>
         </nav>
+    </header>
 
-        <!-- Main content -->
-        <div class="flex-grow flex items-center justify-center mt-16">
-            <div class="bg-[#2c3e50] p-6 rounded-xl shadow-xl w-full max-w-md text-center">
-                <h1 class="text-3xl font-extrabold mb-4 animate-bounce">Ask Anything 🤔</h1>
+    <div id="bg" class="h-screen flex flex-col items-center justify-center">
+        <div class="flex items-center justify-center w-full mt-16">
+                <div class="bg-[#2c3e50] p-8 rounded-xl shadow-xl w-full max-w-4xl text-center">
+                <h1 class="text-3xl text-white font-extrabold mb-4 animate-bounce">Ask Anything 🤔</h1>
                 
-                <div class="flex flex-col gap-3">
-                    <label for="question" class="text-sm text-gray-300">Type your wildest question:</label>
+                <div>
+                    <label for="question" class="text-md text-gray-300 mb-3">Type your question:</label>
                     <input type="text" id="question" name="question" 
-                           class="w-full p-3 text-white bg-[#374151] border-none rounded-lg outline-none focus:ring-2 focus:ring-purple-400 transition" required>
+                            class="my-3 w-full p-3 text-white bg-[#374151] border-none rounded-lg outline-none focus:ring-2 focus:ring-purple-400 transition" required>
                     <button onclick="ask()" 
-                            class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 rounded-lg transition transform hover:scale-110 active:scale-95">
+                            class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 rounded-lg transition transform hover:scale-110 active:scale-95">
                         🚀 Send it
                     </button>
                 </div>
 
-                <div class="mt-4 p-3 bg-[#374151] rounded-lg text-left min-h-[50px]">
+                <div class="mt-6 p-6 bg-[#374151] rounded-lg text-left min-h-[150px] max-h-[300px] overflow-y-auto">
                     <p id="response" class="text-white">Your answer will appear here...</p>
                 </div>
             </div>
         </div>
-
     </div>
-
+    
     <script>
         let responseBox = document.getElementById('response');
         let questionInput = document.getElementById('question');
@@ -107,7 +102,46 @@
             }
             type();
         }
+
+
+        questionInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent form submission or new line
+                ask();
+            }
+        });
     </script>
 
 </body>
 </html>
+<button id="playButton">Play Sound</button>
+        
+<audio id="audio" src="https://www.myinstants.com/media/sounds/napoleon.mp3" loop></audio>
+
+<script>
+    document.getElementById('playButton').addEventListener('click', function() {
+        var audio = document.getElementById("audio");
+        audio.play().catch(function(error) {
+            console.log("Error playing the audio: ", error);
+        });
+    });
+
+    window.onload = function() {
+        var playButton = document.getElementById('playButton');
+        var audio = document.getElementById('audio');
+
+        function tryPlayAudio() {
+            playButton.click(); 
+            
+            audio.play().then(() => {
+                playButton.style.display = 'none';
+                console.log("Audio is playing!");
+            }).catch(function(error) {
+                console.log("Error playing the audio: ", error);
+                setTimeout(tryPlayAudio, 10);
+            });
+        }
+
+        tryPlayAudio(); 
+    };
+</script>
