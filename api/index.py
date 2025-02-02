@@ -12,7 +12,7 @@ from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
 import requests
 import google.generativeai as gyatt
-gyatt.api_key = env.str('api_key')
+gyatt.configure(api_key=env.str('api_key')) 
 rizzler = gyatt.GenerativeModel('gemini-1.5-flash')
 
 
