@@ -28,24 +28,43 @@
         }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen text-white">
+<body class="bg-gradient-to-r from-indigo-800 to-purple-700 min-h-screen">
 
-    <div class="bg-[#2c3e50] p-6 rounded-xl shadow-xl w-full max-w-md text-center">
-        <h1 class="text-3xl font-extrabold mb-4 animate-bounce">Ask Anything 🤔</h1>
-        
-        <div class="flex flex-col gap-3">
-            <label for="question" class="text-sm text-gray-300">Type your wildest question:</label>
-            <input type="text" id="question" name="question" 
-                   class="w-full p-3 text-white bg-[#374151] border-none rounded-lg outline-none focus:ring-2 focus:ring-purple-400 transition" required>
-            <button onclick="ask()" 
-                    class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 rounded-lg transition transform hover:scale-110 active:scale-95">
-                🚀 Send it
-            </button>
+    <div class="flex flex-col min-h-screen">
+
+        <!-- Navbar -->
+        <nav class="w-full bg-[#1e3a8a] p-4 shadow-lg fixed top-0 left-0 right-0 z-10">
+            <div class="max-w-screen-xl mx-auto flex justify-between items-center">
+                <a href="/task" class="text-2xl font-extrabold text-white">Adora</a>
+                <div class="flex space-x-6">
+                    <a href="/task" class="text-white hover:text-purple-300">Home</a>
+                    <a href="/promodormo" class="text-white hover:text-purple-300">Promodormo</a>
+                    <a href="/aiask" class="text-white hover:text-purple-300">Ask</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <div class="flex-grow flex items-center justify-center mt-16">
+            <div class="bg-[#2c3e50] p-6 rounded-xl shadow-xl w-full max-w-md text-center">
+                <h1 class="text-3xl font-extrabold mb-4 animate-bounce">Ask Anything 🤔</h1>
+                
+                <div class="flex flex-col gap-3">
+                    <label for="question" class="text-sm text-gray-300">Type your wildest question:</label>
+                    <input type="text" id="question" name="question" 
+                           class="w-full p-3 text-white bg-[#374151] border-none rounded-lg outline-none focus:ring-2 focus:ring-purple-400 transition" required>
+                    <button onclick="ask()" 
+                            class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 rounded-lg transition transform hover:scale-110 active:scale-95">
+                        🚀 Send it
+                    </button>
+                </div>
+
+                <div id="response" class="mt-4 p-3 bg-[#374151] rounded-lg text-left min-h-[50px]">
+                    <p class="text-gray-300">Your answer will appear here...</p>
+                </div>
+            </div>
         </div>
 
-        <div id="response" class="mt-4 p-3 bg-[#374151] rounded-lg text-left min-h-[50px]">
-            <p class="text-gray-300">Your answer will appear here...</p>
-        </div>
     </div>
 
     <script>

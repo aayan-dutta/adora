@@ -7,72 +7,62 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .bg-overlay {
-            background-color: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(20px);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
 
-        /* Import the Google Font (or host it yourself) */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap'); /* Example font */
-
-        /* Make sure the font is applied */
         body {
-            font-family: 'Poppins', sans-serif; /* Apply the font to the body */
+            font-family: 'Inter', sans-serif;
         }
 
-        .btn { /* Common button styles */
-            font-weight: 700; /* Make buttons bold */
-            text-transform: uppercase; /* Optional: Uppercase button text */
-            letter-spacing: 1px; /* Optional: Add letter spacing */
+        .bg-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
         }
 
-        h1 {
-            font-weight: 900; /* Make the heading extra bold */
+        .btn {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease-in-out;
         }
 
-        p {
-            font-weight: 700; /* Make paragraphs bold */
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
-<body class="bg-[url('https://i.ytimg.com/vi/oyN6slOZcSE/maxresdefault.jpg')] bg-cover bg-center min-h-screen flex flex-col items-center justify-center text-white">
-
+<body class="bg-[url('https://i.ytimg.com/vi/oyN6slOZcSE/maxresdefault.jpg')] bg-cover bg-center min-h-screen flex flex-col">
     <div class="bg-overlay w-full h-full absolute inset-0"></div>
+    
+    <nav class="w-full bg-[#1e3a8a] p-6 shadow-lg fixed top-0 left-0 right-0 z-10 flex justify-between items-center max-w-screen-xl mx-auto">
+        <a href="/task" class="text-2xl font-black text-white tracking-widest">Adora</a>
+        <div class="flex space-x-6 text-lg">
+            <a href="/task" class="text-white hover:text-yellow-300">Home</a>
+            <a href="/promodormo" class="text-white hover:text-yellow-300">Pomodoro</a>
+            <a href="/aiask" class="text-white hover:text-yellow-300">Ask AI</a>
+        </div>
+    </nav>
 
-    <div class="container mx-auto py-16 text-center relative z-10 w-3/4">
-
-        <h1 class="text-5xl font-bold text-yellow-400 uppercase tracking-widest mb-4">YOOO, Adora's ready to SLAY!</h1>
-
-        <p class="text-2xl text-white">Welcome back, {{ current_user.username }}! Let's **crush** those tasks. 💀🧠🔥</p>
-
-        <div class="flex justify-center gap-8">
-
-            <a href="{{ url_for('aiask') }}" class="btn bg-pink-500 hover:bg-pink-700 text-white py-4 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg text-xl">
+    <div class="relative z-10 flex flex-col items-center justify-center min-h-screen text-white text-center px-6">
+        <h1 class="text-6xl font-extrabold text-yellow-400 mb-6 tracking-wide drop-shadow-lg">Adora's ready to SLAY!</h1>
+        <p class="text-2xl font-semibold mb-10">Welcome back, {{ current_user.username }}! Let's crush those tasks. 💀🧠🔥</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 w-full max-w-lg">
+            <a href="{{ url_for('aiask') }}" class="btn bg-pink-500 hover:bg-pink-700 text-white py-4 px-8 rounded-lg text-xl shadow-lg">
                 Ask AI 🤖
             </a>
-
-            <a href="{{ url_for('index') }}" class="btn bg-blue-500 hover:bg-blue-700 text-white py-4 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg text-xl">
+            <a href="{{ url_for('index') }}" class="btn bg-blue-500 hover:bg-blue-700 text-white py-4 px-8 rounded-lg text-xl shadow-lg">
                 View Tasks 💥
             </a>
-        </div>
-
-        <div class="flex justify-center gap-8 flex-wrap mt-10">
-
-            <a href="{{ url_for('promodormo') }}" class="btn bg-yellow-500 hover:bg-yellow-700 text-white py-4 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg text-xl">
+            <a href="{{ url_for('promodormo') }}" class="btn bg-yellow-500 hover:bg-yellow-700 text-white py-4 px-8 rounded-lg text-xl shadow-lg">
                 Pomodoro 🚀
             </a>
-
-            <a href="{{ url_for('logout') }}" class="btn bg-red-500 hover:bg-red-700 text-white py-4 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg text-xl">
+            <a href="{{ url_for('logout') }}" class="btn bg-red-500 hover:bg-red-700 text-white py-4 px-8 rounded-lg text-xl shadow-lg">
                 Logout 🥴
             </a>
-
         </div>
-
-        <p class="text-2xl text-pink-400 font-bold mt-10 tracking-wide">
-            Let's get that grind on, fam. Time to **crush it**! 💯
-        </p>
-
+        
+        <p class="text-xl text-yellow-300 font-bold mt-10 tracking-wide">Let's get that grind on, fam. Time to crush it! 💯</p>
     </div>
-
 </body>
 </html>
