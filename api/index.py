@@ -119,8 +119,10 @@ def register():
     return render_template('register.html', form=form)
 
 @app.route('/promodormo')
+@login_required
 def promodormo():
-    return render_template('promodormo.html')
+    tasks = Task.query.filter_by(user_id=current_user.id).order_by(Task.id.desc()).limit(5).all()
+    return render_template('promodormo.html', tasks=tasks)
 
 
 
@@ -158,7 +160,7 @@ class Task(db.Model):
 @app.route('/task')
 @login_required         
 def index():
-    tasks = Task.query.filter_by(user_id=current_user.id).all()  # Show only the logged-in user's tasks
+    tasks = Task.query.filter_by(user_id=current_user.id).all()
     return render_template('index.html', tasks=tasks)
 
 @app.route('/add', methods=['POST'])

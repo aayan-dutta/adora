@@ -58,6 +58,16 @@
 
         <!-- Encouragement Message -->
         <p id="encourage" class="mt-4 text-sm text-yellow-300 font-bold"></p>
+
+        <!-- Last 5 Tasks -->
+        <div class="mt-6 text-white">
+            <h2 class="text-2xl font-bold mb-2">Last 5 Tasks</h2>
+            <ul class="list-disc list-inside">
+                {% for task in tasks %}
+                    <li>{{ task.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 
     <script>
