@@ -1,36 +1,12 @@
-Adora - Task Management & Productivity App
+adora-ten.vercel.app
 
-Adora is a Flask-based task management and productivity application designed to help users organize their school tasks, manage their time efficiently, and get AI-powered assistance for doubts, but made with fun in mind.
+adora was built as an education tool with fun in mind.
+no more boring plain white and black dreary pages.
+everything in adora is turnt up to 11 in terms on funkiness😜
 
-Features
+features:
+AI with a personality to help you with problems (made w/ gemini api)
+pomodoro timer 
+todo list/ task manager
 
-User Authentication: Register and log in securely.
-
-Task Management: Create, update, and delete tasks.
-
-Pomodoro Timer: Stay focused with a built-in productivity timer.
-
-AI Assistant: Ask questions and get AI-powered answers.
-
-Supabase Integration: Store and manage tasks efficiently.
-
-Responsive Dashboard: A visually engaging interface with animated gradients and stylish UI. (it looks fun alright)
-
-Tech Stack:
-
-Backend: Flask (Python), Supabase (Database)
-
-Frontend: HTML, Tailwind CSS, Flowbite
-
-Deployment: Vercel
-
-Installation
-
-Prerequisites
-
-Python 3.x installed
-
-Pip and virtual environment setup
-
-Contributors:
-Aayan Dutta
+the project was made using supabase (to store users and tasks), gemini and bcrypt to encrypt user password
