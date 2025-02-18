@@ -9,4 +9,4 @@ AI with a personality to help you with problems (made w/ gemini api)
 pomodoro timer 
 todo list/ task manager
 
-the project was made using supabase (to store users and tasks), gemini and bcrypt to encrypt user password
+the project was made using flask, tailwind, supabase (to store users and tasks), gemini and bcrypt to encrypt user password
